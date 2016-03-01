@@ -108,6 +108,16 @@ var UploadFileBox = React.createClass({
 				var register =  {fileName: this.state.file.name, contacts: results.data};
 				this.firebaseRefs["registers"].push(register);
 				//Save document on server
+				 /*request.post('/profile')
+    				.set('Content-Type', 'application/json')
+    				.send('{"name":"tj","pet":"tobi"}')
+    				.end(callback);*/
+
+    				 request.put("/profile")    
+            			.attach("image-file", this.state.file, this.state.file.name)
+            			.end(function(res){
+               				 console.log(res);
+            			});
 				alert("Your register was saved successfully");
 			}
 		}
@@ -124,16 +134,12 @@ var UploadFileBox = React.createClass({
 	},
 	render: function(){
 		return (
-			<div className="uploadFileBox">
-					<span className="btn btn-default btn-file">
+			<div className='uploadFileBox'>
+					<span className='btn btn-default btn-file'>
     					Browse 
-    					<input 
-    						type="file" 
-    						onChange={this.handleFileChange}
-    						 accept=".csv"
-    						/>
+    					<input type='file'  onChange={this.handleFileChange} accept='.csv'/>
 					</span>
-					<button type="button" className="btn btn-primary" onClick={this.handleVerify}>Next</button>
+					<button type='button' className='btn btn-primary' onClick={this.handleVerify}>Next</button>
 			</div>
 			);
 	}

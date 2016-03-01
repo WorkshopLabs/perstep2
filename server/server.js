@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 /*Configure the multer.*/
 
 app.post('/profile', function (req, res) {
+	console.log("Post method");
   upload(req, res, function (err) {
     if (err) {
       console.log("Error while uploading file");

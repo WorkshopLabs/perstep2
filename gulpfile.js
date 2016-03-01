@@ -12,6 +12,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash.assign');
 var react = require('gulp-react')
 
+var reactPreset = require('babel-preset-react');
+var es2015Preset = require('babel-preset-es2015');
+
 gulp.task('server', function () {
 
 
@@ -26,7 +29,7 @@ gulp.task('server', function () {
 // add custom browserify options here
 var customOpts = {
   entries: ['./public/app.js'],
-  transform: [babelify],
+  transform: [babelify.configure({'presets': [reactPreset, es2015Preset]})],
   debug: true
 };
 
