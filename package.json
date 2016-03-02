@@ -12,13 +12,18 @@
   },
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^3.3.6",
     "express": "^4.13.0",
+    "firebase": "^2.4.1",
+    "fs": "0.0.2",
     "install": "^0.1.8",
     "multer": "^1.1.0",
     "npm": "^2.13.2",
+    "papaparse": "^4.1.2",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",
+    "reactfire": "^0.6.0",
     "superagent": "^1.2.0"
   },
   "devDependencies": {

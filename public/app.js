@@ -91,6 +91,12 @@ var Comment = React.createClass({
 });
 */
 
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Firebase = require('firebase');
+var Papa = require('papaparse');
+var ReactFire = require ('reactfire');
+var request = require('superagent');
 var firebaseUrl = "https://contactslistfromdoc.firebaseio.com/";
 
 
@@ -107,13 +113,7 @@ var UploadFileBox = React.createClass({
     		if (confirm('Do you want to add these '+results.data.length+' contacts?')) {
 				var register =  {fileName: this.state.file.name, contacts: results.data};
 				this.firebaseRefs["registers"].push(register);
-				//Save document on server
-				 /*request.post('/profile')
-    				.set('Content-Type', 'application/json')
-    				.send('{"name":"tj","pet":"tobi"}')
-    				.end(callback);*/
-
-    				 request.put("/profile")    
+    				 request.post("/documents")    
             			.attach("image-file", this.state.file, this.state.file.name)
             			.end(function(res){
                				 console.log(res);

@@ -4,23 +4,13 @@ var path = require('path');
 var multer  = require('multer');
 var upload = multer({ dest: './uploads/' })
 
-
 var port = process.env.PORT || 3030;
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-/*Configure the multer.*/
-
-app.post('/profile', function (req, res) {
-	console.log("Post method");
-  upload(req, res, function (err) {
-    if (err) {
-      console.log("Error while uploading file");
-      return
-    }
-    console.log("Success while uploading file");
-  })
-})
+app.post('/documents',upload.any(), function (req, res) {
+	console.log("File was saved");
+});
 
 app.listen( port, function(){
 	console.log('conectado en ', port);
